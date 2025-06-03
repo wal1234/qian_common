@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e2505a0-5e7f-4e1e-8e18-88bd41c0479a" name="Changes" comment="公用返回体以及公用异常枚举优化">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commons/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/BaseController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/entity/SysDictData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/entity/SysDictType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/entity/SysMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/entity/system/SysDept.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/entity/system/SysRole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/entity/system/SysUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/security/LoginUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/security/SecurityUtils.java" beforeDir="false" />
-    </list>
+    <list default="true" id="5e2505a0-5e7f-4e1e-8e18-88bd41c0479a" name="Changes" comment="公用返回体以及公用异常枚举优化" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,28 +38,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.ide.FileNotInSourceRootChecker.no.check&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Encoding/qian_blog/qian_web&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Code Search&quot;,
-    &quot;two.files.diff.last.used.file&quot;: &quot;D:/Encoding/Code Item/qian_blog/qian_common/commons/src/main/java/com/qian/common/core/BaseEntity.java&quot;,
-    &quot;two.files.diff.last.used.folder&quot;: &quot;D:/Encoding/Code Item/qian_blog/qian_common/commons/src/main/java/com/qian/common/core/domain/entity/system&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.ide.FileNotInSourceRootChecker.no.check": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/Encoding/qian_blog/qian_common",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "Code Search",
+    "two.files.diff.last.used.file": "D:/Encoding/Code Item/qian_blog/qian_common/commons/src/main/java/com/qian/common/core/BaseEntity.java",
+    "two.files.diff.last.used.folder": "D:/Encoding/Code Item/qian_blog/qian_common/commons/src/main/java/com/qian/common/core/domain/entity/system",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Encoding\Code Item\qian_blog\qian_common\commons\src\main\java\com\qian\common\core\domain\entity\system" />
@@ -120,6 +109,7 @@
       <workItem from="1747826455478" duration="1875000" />
       <workItem from="1747910921898" duration="1504000" />
       <workItem from="1747963697802" duration="608000" />
+      <workItem from="1748944504290" duration="521000" />
     </task>
     <task id="LOCAL-00001" summary="公用代码">
       <option name="closed" value="true" />
@@ -153,7 +143,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747732362375</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="公用返回体以及公用异常枚举优化">
+      <option name="closed" value="true" />
+      <created>1748944768462</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748944768462</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
