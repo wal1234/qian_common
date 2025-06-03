@@ -6,38 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="5e2505a0-5e7f-4e1e-8e18-88bd41c0479a" name="Changes" comment="公用返回体以及公用异常枚举优化">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/common/core/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/common/core/controller/BaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/common/utils/SecurityUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/common/utils/SecurityUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/common/utils/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/common/utils/StringUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysConfigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysDeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysDeptController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysDictController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysDictController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysDictDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysDictDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysDictTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysDictTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysPostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysPostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysRoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/SysUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/SysDept.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/SysDept.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/SysMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/SysMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/SysRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/SysRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/entity/SysDept.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/entity/SysDept.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/entity/SysRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/entity/SysRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/entity/SysUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/domain/entity/SysUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/mapper/SysRoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/mapper/SysRoleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/ISysRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/ISysRoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/impl/SysConfigServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/impl/SysConfigServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/impl/SysDictTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/impl/SysDictTypeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/impl/SysMenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/impl/SysMenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/impl/SysRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/impl/SysRoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/impl/SysUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/java/com/qian/system/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/resources/mapper/system/SysRoleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/resources/mapper/system/SysRoleMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../qian_system/src/main/resources/mapper/system/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../qian_system/src/main/resources/mapper/system/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commons/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/BaseController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/entity/SysDictData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/entity/SysDictType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/entity/SysMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/entity/system/SysDept.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/entity/system/SysRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/entity/system/SysUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/security/LoginUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/security/SecurityUtils.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +30,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -79,8 +57,8 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;com.intellij.ide.FileNotInSourceRootChecker.no.check&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Encoding/Code Item/qian_blog&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Encoding/qian_blog/qian_web&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -137,6 +115,11 @@
       <workItem from="1747203601626" duration="6174000" />
       <workItem from="1747309357650" duration="2671000" />
       <workItem from="1747616204198" duration="3437000" />
+      <workItem from="1747731501812" duration="1687000" />
+      <workItem from="1747791499572" duration="613000" />
+      <workItem from="1747826455478" duration="1875000" />
+      <workItem from="1747910921898" duration="1504000" />
+      <workItem from="1747963697802" duration="608000" />
     </task>
     <task id="LOCAL-00001" summary="公用代码">
       <option name="closed" value="true" />
@@ -162,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747616617717</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="公用返回体以及公用异常枚举优化">
+      <option name="closed" value="true" />
+      <created>1747732362375</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1747732362375</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
