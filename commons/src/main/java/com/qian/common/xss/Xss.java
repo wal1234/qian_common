@@ -6,18 +6,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 防止XSS攻击注解
+ * XSS过滤注解
  */
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Target(value = { ElementType.METHOD, ElementType.FIELD, ElementType.CONSTRUCTOR, ElementType.PARAMETER })
 public @interface Xss {
     /**
      * 错误消息
      */
-    String message() default "不允许任何脚本运行";
-
-    /**
-     * 验证组
-     */
-    Class<?>[] groups() default {};
+    String message() default "不允许输入特殊字符";
 } 

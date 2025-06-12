@@ -85,7 +85,7 @@ public @interface Excel {
     /**
      * 列类型枚举
      */
-    public enum ColumnType {
+    enum ColumnType {
         NUMERIC(0), STRING(1);
         private final int value;
 
@@ -101,7 +101,7 @@ public @interface Excel {
     /**
      * 字段类型枚举
      */
-    public enum Type {
+    enum Type {
         ALL(0), EXPORT(1), IMPORT(2);
         private final int value;
 

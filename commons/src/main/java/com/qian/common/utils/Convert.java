@@ -338,8 +338,7 @@ public class Convert {
             return defaultValue;
         }
         try {
-            LocalDate localDate = DateUtils.parseDate(valueStr);
-            return toDate(localDate);
+            return DateUtils.parseDate(valueStr);
         } catch (Exception e) {
             return defaultValue;
         }
@@ -487,5 +486,12 @@ public class Convert {
      */
     public static Map<String, Object> toMap(Object value) {
         return toMap(value, null);
+    }
+
+    public static LocalDate toLocalDate(Date date) {
+        if (date == null) {
+            return null;
+        }
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 } 

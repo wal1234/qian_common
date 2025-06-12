@@ -5,14 +5,18 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
@@ -30,6 +34,8 @@ import java.util.function.Function;
 @Component
 public class JwtUtils {
 
+    private static final Logger log = LoggerFactory.getLogger(JwtUtils.class);
+
     // Token在Claims中的字段名
     private static final String CLAIM_KEY_USER_ID = "userId";
     private static final String CLAIM_KEY_USERNAME = "username";
@@ -38,8 +44,8 @@ public class JwtUtils {
     @Value("${jwt.secret}")
     private String secret;
 
-    @Value("${jwt.expiration:86400000}") // 默认24小时
-    private long expiration;
+    @Value("${jwt.expiration}")
+    private Long expiration;
 
     /**
      * 生成JWT令牌 - 基于UserDetails
@@ -94,24 +100,26 @@ public class JwtUtils {
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(subject)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(getSigningKey())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + expiration * 1000))
+                .signWith(getSecretKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
     /**
      * 解析JWT令牌
-     *
-     * @param token JWT令牌
-     * @return Claims 声明信息
      */
     public Claims parseToken(String token) {
-        return Jwts.parser()
-                .setSigningKey(secret.getBytes(StandardCharsets.UTF_8))
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
+        try {
+            return Jwts.parserBuilder()
+                    .setSigningKey(getSecretKey())
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (Exception e) {
+            log.error("JWT解析失败：{}", e.getMessage());
+            return null;
+        }
     }
 
     /**
@@ -183,14 +191,11 @@ public class JwtUtils {
 
     /**
      * 验证令牌 - 基本验证
-     *
-     * @param token JWT令牌
-     * @return 是否有效
      */
     public boolean validateToken(String token) {
         try {
-            Jwts.parser()
-                    .setSigningKey(secret.getBytes(StandardCharsets.UTF_8))
+            Jwts.parserBuilder()
+                    .setSigningKey(getSecretKey())
                     .build()
                     .parseClaimsJws(token);
             return true;
@@ -227,16 +232,20 @@ public class JwtUtils {
      * @return 是否过期
      */
     public boolean isTokenExpired(String token) {
-        final Date expiration = getExpirationDateFromToken(token);
-        return expiration.before(new Date());
+        try {
+            Claims claims = parseToken(token);
+            Date expiration = claims.getExpiration();
+            return expiration.before(new Date());
+        } catch (Exception e) {
+            log.error("JWT验证失败: {}", e.getMessage());
+            return true;
+        }
     }
 
     /**
      * 获取签名密钥
-     *
-     * @return 签名密钥
      */
-    private Key getSigningKey() {
+    private SecretKey getSecretKey() {
         return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 } 

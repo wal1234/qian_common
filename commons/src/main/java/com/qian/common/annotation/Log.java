@@ -5,7 +5,6 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import com.qian.common.enums.system.BusinessType;
 
 /**
  * 操作日志记录
@@ -22,7 +21,7 @@ public @interface Log {
     /**
      * 功能
      */
-    BusinessType businessType() default BusinessType.OTHER;
+    String businessType() default "";
 
     /**
      * 是否保存请求的参数

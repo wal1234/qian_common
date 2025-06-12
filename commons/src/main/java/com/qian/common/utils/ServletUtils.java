@@ -1,12 +1,13 @@
 package com.qian.common.utils;
 
+import com.qian.common.domain.LoginUser;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -24,7 +25,7 @@ public class ServletUtils {
      * 获取String参数
      */
     public static String getParameter(String name, String defaultValue) {
-        return StringUtils.nvl(getRequest().getParameter(name), defaultValue);
+        return getRequest().getParameter(name) != null ? getRequest().getParameter(name) : defaultValue;
     }
 
     /**
@@ -38,21 +39,29 @@ public class ServletUtils {
      * 获取Integer参数
      */
     public static Integer getParameterToInt(String name, Integer defaultValue) {
-        return StringUtils.nvl(Integer.parseInt(getRequest().getParameter(name)), defaultValue);
+        return getRequest().getParameter(name) != null ? Integer.parseInt(getRequest().getParameter(name)) : defaultValue;
     }
 
     /**
      * 获取request
      */
     public static HttpServletRequest getRequest() {
-        return getRequestAttributes().getRequest();
+        RequestAttributes attributes = RequestContextHolder.getRequestAttributes();
+        if (attributes instanceof ServletRequestAttributes) {
+            return ((ServletRequestAttributes) attributes).getRequest();
+        }
+        return null;
     }
 
     /**
      * 获取response
      */
     public static HttpServletResponse getResponse() {
-        return getRequestAttributes().getResponse();
+        RequestAttributes attributes = RequestContextHolder.getRequestAttributes();
+        if (attributes instanceof ServletRequestAttributes) {
+            return ((ServletRequestAttributes) attributes).getResponse();
+        }
+        return null;
     }
 
     /**
@@ -69,12 +78,8 @@ public class ServletUtils {
 
     /**
      * 将字符串渲染到客户端
-     *
-     * @param response 渲染对象
-     * @param string   待渲染的字符串
-     * @return null
      */
-    public static String renderString(HttpServletResponse response, String string) {
+    public static void renderString(HttpServletResponse response, String string) {
         try {
             response.setStatus(200);
             response.setContentType("application/json");
@@ -83,7 +88,6 @@ public class ServletUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
     }
 
     /**
@@ -110,5 +114,33 @@ public class ServletUtils {
             return true;
         }
         return false;
+    }
+
+    /**
+     * 获取用户
+     */
+    public static LoginUser getLoginUser() {
+        return (LoginUser) getRequest().getAttribute("loginUser");
+    }
+
+    /**
+     * 获取用户
+     */
+    public static LoginUser getLoginUser(String token) {
+        return (LoginUser) getRequest().getAttribute(token);
+    }
+
+    /**
+     * 设置用户身份信息
+     */
+    public static void setLoginUser(LoginUser loginUser) {
+        getRequest().setAttribute("loginUser", loginUser);
+    }
+
+    /**
+     * 删除用户身份信息
+     */
+    public static void deleteLoginUser(String token) {
+        getRequest().removeAttribute(token);
     }
 } 

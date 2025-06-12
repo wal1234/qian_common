@@ -11,6 +11,15 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.qian.common.domain.LoginUser;
+import com.qian.common.core.domain.entity.SysUser;
+import com.qian.common.exception.ServiceException;
+import org.springframework.security.core.userdetails.UserDetails;
+import cn.hutool.core.util.StrUtil;
+import com.qian.common.constant.HttpStatus;
 
 /**
  * AES-CBC-PKCS7Padding加密工具类（使用BouncyCastleProvider）
@@ -171,5 +180,100 @@ public class SecurityUtils {
             throws NoSuchAlgorithmException, InvalidKeyException {
         byte[] actualHmac = generateHmac(key, data);
         return constantTimeEquals(actualHmac, expectedHmac);
+    }
+
+    /**
+     * 获取用户账户
+     **/
+    public static String getUsername() {
+        try {
+            return getLoginUser().getUsername();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    /**
+     * 获取用户
+     **/
+    public static LoginUser getLoginUser() {
+        try {
+            return (LoginUser) getAuthentication().getPrincipal();
+        } catch (Exception e) {
+            throw new ServiceException("获取用户信息异常");
+        }
+    }
+
+    /**
+     * 获取Authentication
+     */
+    public static Authentication getAuthentication() {
+        return SecurityContextHolder.getContext().getAuthentication();
+    }
+
+    /**
+     * 获取用户ID
+     */
+    public static Long getUserId() {
+        try {
+            return Long.parseLong(getLoginUser().getUsername());
+        } catch (Exception e) {
+            throw new ServiceException("获取用户ID异常");
+        }
+    }
+
+    /**
+     * 获取部门ID
+     */
+    public static Long getDeptId() {
+        try {
+            return getLoginUser().getUser().getDeptId();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /**
+     * 获取用户
+     */
+    public static SysUser getUser() {
+        try {
+            return getLoginUser().getUser();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /**
+     * 生成BCryptPasswordEncoder密码
+     *
+     * @param password 密码
+     * @return 加密字符串
+     */
+    public static String encryptPassword(String password) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.encode(password);
+    }
+
+    /**
+     * 判断密码是否相同
+     *
+     * @param rawPassword 真实密码
+     * @param encodedPassword 加密后字符
+     * @return 结果
+     */
+    public static boolean matchesPassword(String rawPassword, String encodedPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return passwordEncoder.matches(rawPassword, encodedPassword);
+    }
+
+    /**
+     * 是否为管理员
+     * 
+     * @param userId 用户ID
+     * @return 结果
+     */
+    public static boolean isAdmin(Long userId) {
+        return userId != null && 1L == userId;
     }
 }

@@ -1,18 +1,20 @@
 package com.qian.common.utils;
 
-import cn.hutool.core.util.StrUtil;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.util.AntPathMatcher;
 
 /**
  * 字符串工具类
  */
-public class StringUtils extends StrUtil {
-    /**
-     * 下划线
-     */
-    private static final char SEPARATOR = '_';
-
+public class StringUtils extends org.apache.commons.lang3.StringUtils {
     /** 空字符串 */
     private static final String NULLSTR = "";
+
+    /** 下划线 */
+    private static final char SEPARATOR = '_';
 
     /**
      * 获取参数不为空值
@@ -30,7 +32,7 @@ public class StringUtils extends StrUtil {
      * @param coll 要判断的Collection
      * @return true：为空 false：非空
      */
-    public static boolean isEmpty(java.util.Collection<?> coll) {
+    public static boolean isEmpty(Collection<?> coll) {
         return isNull(coll) || coll.isEmpty();
     }
 
@@ -40,7 +42,7 @@ public class StringUtils extends StrUtil {
      * @param coll 要判断的Collection
      * @return true：非空 false：空
      */
-    public static boolean isNotEmpty(java.util.Collection<?> coll) {
+    public static boolean isNotEmpty(Collection<?> coll) {
         return !isEmpty(coll);
     }
 
@@ -70,7 +72,7 @@ public class StringUtils extends StrUtil {
      * @param map 要判断的Map
      * @return true：为空 false：非空
      */
-    public static boolean isEmpty(java.util.Map<?, ?> map) {
+    public static boolean isEmpty(Map<?, ?> map) {
         return isNull(map) || map.isEmpty();
     }
 
@@ -80,7 +82,7 @@ public class StringUtils extends StrUtil {
      * @param map 要判断的Map
      * @return true：非空 false：空
      */
-    public static boolean isNotEmpty(java.util.Map<?, ?> map) {
+    public static boolean isNotEmpty(Map<?, ?> map) {
         return !isEmpty(map);
     }
 
@@ -224,43 +226,20 @@ public class StringUtils extends StrUtil {
         }
         final int length = template.length();
 
-        // 初始化定义好的长度以获得更好的性能
         StringBuilder result = new StringBuilder(length);
-        int handledPosition = 0;
-        int delimIndex;// 占位符所在位置
-        for (int argIndex = 0; argIndex < params.length; argIndex++) {
-            delimIndex = template.indexOf(EMPTY_JSON, handledPosition);
-            if (delimIndex == -1) {
-                if (handledPosition == 0) {
-                    return template;
-                } else {
-                    result.append(template, handledPosition, length);
-                    return result.toString();
-                }
-            } else {
-                if (delimIndex > 0 && template.charAt(delimIndex - 1) == C_BACKSLASH) {
-                    if (delimIndex > 1 && template.charAt(delimIndex - 2) == C_BACKSLASH) {
-                        // 转义符之前还有一个转义符，占位符依旧有效
-                        result.append(template, handledPosition, delimIndex - 1);
-                        result.append(utf8Str(params[argIndex]));
-                        handledPosition = delimIndex + 2;
-                    } else {
-                        // 占位符被转义
-                        argIndex--;
-                        result.append(template, handledPosition, delimIndex - 1);
-                        result.append(C_DELIM_START);
-                        handledPosition = delimIndex + 1;
-                    }
-                } else {
-                    // 正常占位符
-                    result.append(template, handledPosition, delimIndex);
-                    result.append(utf8Str(params[argIndex]));
-                    handledPosition = delimIndex + 2;
-                }
+        int position = 0;
+        int i;
+        for (int j = 0; j < params.length; j++) {
+            i = template.indexOf("{}", position);
+            if (i == -1) {
+                result.append(template.substring(position));
+                return result.toString();
             }
+            result.append(template, position, i);
+            result.append(params[j]);
+            position = i + 2;
         }
-        result.append(template, handledPosition, template.length());
-
+        result.append(template.substring(position));
         return result.toString();
     }
 
@@ -393,6 +372,65 @@ public class StringUtils extends StrUtil {
             }
         }
         return false;
+    }
+
+    /**
+     * 驼峰式命名法 例如：user_name->userName
+     */
+    public static String toCamelCase(String s, char separator) {
+        if (s == null) {
+            return null;
+        }
+        s = s.toLowerCase();
+        StringBuilder sb = new StringBuilder(s.length());
+        boolean upperCase = false;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if (c == separator) {
+                upperCase = true;
+            } else if (upperCase) {
+                sb.append(Character.toUpperCase(c));
+                upperCase = false;
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 查找指定字符串是否匹配指定字符串列表中的任意一个字符串
+     *
+     * @param str  指定字符串
+     * @param strs 需要检查的字符串数组
+     * @return 是否匹配
+     */
+    public static boolean matches(String str, List<String> strs) {
+        if (isEmpty(str) || isEmpty(strs)) {
+            return false;
+        }
+        for (String pattern : strs) {
+            if (isMatch(pattern, str)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 判断url是否与规则配置:
+     * ? 表示单个字符;
+     * * 表示一层路径内的任意字符串，不可跨层级;
+     * ** 表示任意层路径;
+     *
+     * @param pattern 匹配规则
+     * @param url     需要匹配的url
+     * @return
+     */
+    public static boolean isMatch(String pattern, String url) {
+        AntPathMatcher matcher = new AntPathMatcher();
+        return matcher.match(pattern, url);
     }
 
     @SuppressWarnings("unchecked")

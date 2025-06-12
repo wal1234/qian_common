@@ -6,6 +6,44 @@
   <component name="ChangeListManager">
     <list default="true" id="5e2505a0-5e7f-4e1e-8e18-88bd41c0479a" name="Changes" comment="公用返回体以及公用异常枚举优化">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/commons/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/annotation/Excel.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/annotation/Excel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/annotation/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/annotation/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/constants/ResultCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/constants/ResultCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/TableDataInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/TableDataInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/core/domain/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/exception/BaseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/exception/BaseException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/exception/ServiceException.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/exception/ServiceException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/response/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/response/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/Convert.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/Convert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/DateUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/JwtUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/SecurityUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/SecurityUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/ServletUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/ServletUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/SqlUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/SqlUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/utils/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/xss/Xss.java" beforeDir="false" afterPath="$PROJECT_DIR$/commons/src/main/java/com/qian/common/xss/Xss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/feign-client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/core/domain/BaseEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/annotation/Log.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/aspect/LogAspect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/domain/SysLoginLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/domain/SysOperLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/event/LogEventListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/event/LoginLogEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/event/OperationLogEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/mapper/SysLoginLogMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/mapper/SysOperLogMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/service/ISysLoginLogService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/service/ISysOperLogService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/service/impl/SysLoginLogServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/service/impl/SysOperLogServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qian/common/log/utils/LogUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SysLoginLogMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SysOperLogMapper.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +58,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GithubDefaultAccount">
@@ -50,8 +93,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.ide.FileNotInSourceRootChecker.no.check": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Encoding/qian_blog/qian_common",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Encoding/qian_blog/qian_system",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -60,7 +103,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.selected.configurable": "vcs.Git",
     "two.files.diff.last.used.file": "D:/Encoding/Code Item/qian_blog/qian_common/commons/src/main/java/com/qian/common/core/BaseEntity.java",
     "two.files.diff.last.used.folder": "D:/Encoding/Code Item/qian_blog/qian_common/commons/src/main/java/com/qian/common/core/domain/entity/system",
     "vue.rearranger.settings.migration": "true"
@@ -77,21 +120,6 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.qian.common.core.domain.entity.system" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="qian_common" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="qian_common" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -115,7 +143,11 @@
       <workItem from="1747910921898" duration="1504000" />
       <workItem from="1747963697802" duration="608000" />
       <workItem from="1748944504290" duration="702000" />
-      <workItem from="1749200058884" duration="278000" />
+      <workItem from="1749200058884" duration="554000" />
+      <workItem from="1749201286822" duration="1020000" />
+      <workItem from="1749455997581" duration="2711000" />
+      <workItem from="1749608463622" duration="6599000" />
+      <workItem from="1749688872136" duration="1140000" />
     </task>
     <task id="LOCAL-00001" summary="公用代码">
       <option name="closed" value="true" />
@@ -165,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748945066543</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="公用返回体以及公用异常枚举优化">
+      <option name="closed" value="true" />
+      <created>1749200364469</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1749200364469</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

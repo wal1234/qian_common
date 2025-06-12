@@ -38,7 +38,11 @@ public enum ResultCode {
     ERROR(500, "系统异常"),
     SYSTEM_BUSY(500002, "系统繁忙，请稍后再试"),
     DATABASE_ERROR(500003, "数据库异常"),
-    REMOTE_SERVICE_ERROR(500004, "远程服务调用异常");
+    REMOTE_SERVICE_ERROR(500004, "远程服务调用异常"),
+    
+    // 新增的失败状态
+    FAILED(500, "操作失败"),
+    VALIDATE_FAILED(404, "参数检验失败");
     
     // 状态码
     private final int code;
@@ -49,5 +53,13 @@ public enum ResultCode {
     ResultCode(int code, String message) {
         this.code = code;
         this.message = message;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
     }
 } 

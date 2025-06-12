@@ -1,14 +1,18 @@
 package com.qian.common.exception;
 
-import com.qian.common.response.Response;
+import com.qian.common.core.domain.Response;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindException;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import jakarta.servlet.http.HttpServletRequest;
+import java.util.stream.Collectors;
 
 /**
  * 全局异常处理器
@@ -16,52 +20,73 @@ import jakarta.servlet.http.HttpServletRequest;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     /**
      * 处理自定义异常
      */
     @ExceptionHandler(ServiceException.class)
-    public Response<Void> handleServiceException(ServiceException e, HttpServletRequest request) {
-        log.error("请求地址'{}',发生业务异常.", request.getRequestURI(), e);
-        Integer code = e.getCode();
-        return code != null ? Response.error(code, e.getMessage()) : Response.error(e.getMessage());
+    public Response<String> handleServiceException(ServiceException e) {
+        log.error(e.getMessage(), e);
+        return Response.fail(e.getCode(), e.getMessage()).convert();
+    }
+
+    /**
+     * 处理自定义异常
+     */
+    @ExceptionHandler(ConfigException.class)
+    public Response<String> handleConfigException(ConfigException e) {
+        log.error(e.getMessage(), e);
+        return Response.fail(e.getCode(), e.getMessage()).convert();
     }
 
     /**
      * 处理参数校验异常
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Response<Void> handleMethodArgumentNotValidException(MethodArgumentNotValidException e, HttpServletRequest request) {
-        log.error("请求地址'{}',发生参数校验异常.", request.getRequestURI(), e);
+    public Response<String> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        log.error(e.getMessage(), e);
         String message = e.getBindingResult().getFieldError().getDefaultMessage();
-        return Response.error(message);
+        return Response.fail(message);
     }
 
     /**
      * 处理参数绑定异常
      */
     @ExceptionHandler(BindException.class)
-    public Response<Void> handleBindException(BindException e, HttpServletRequest request) {
-        log.error("请求地址'{}',发生参数绑定异常.", request.getRequestURI(), e);
+    public Response<String> handleBindException(BindException e) {
+        log.error(e.getMessage(), e);
         String message = e.getBindingResult().getFieldError().getDefaultMessage();
-        return Response.error(message);
+        return Response.fail(message);
     }
 
     /**
-     * 处理请求方法不支持异常
+     * 处理参数校验异常
      */
-    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public Response<Void> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException e, HttpServletRequest request) {
-        log.error("请求地址'{}',不支持'{}'请求", request.getRequestURI(), e.getMethod());
-        return Response.error("不支持' " + e.getMethod() + "'请求");
+    @ExceptionHandler(ConstraintViolationException.class)
+    public Response<String> handleConstraintViolationException(ConstraintViolationException e) {
+        log.error(e.getMessage(), e);
+        String message = e.getConstraintViolations().stream()
+                .map(ConstraintViolation::getMessage)
+                .collect(Collectors.joining(", "));
+        return Response.fail(message);
+    }
+
+    /**
+     * 处理权限校验异常
+     */
+    @ExceptionHandler(AccessDeniedException.class)
+    public Response<String> handleAccessDeniedException(AccessDeniedException e) {
+        log.error("没有权限，{}", e.getMessage());
+        return Response.fail(403, "没有权限，不能访问").convert();
     }
 
     /**
      * 处理其他异常
      */
     @ExceptionHandler(Exception.class)
-    public Response<Void> handleException(Exception e, HttpServletRequest request) {
-        log.error("请求地址'{}',发生未知异常.", request.getRequestURI(), e);
-        return Response.error(e.getMessage());
+    public Response<String> handleException(Exception e) {
+        log.error(e.getMessage(), e);
+        return Response.fail("服务器错误，请联系管理员");
     }
 } 

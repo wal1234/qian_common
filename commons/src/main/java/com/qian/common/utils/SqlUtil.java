@@ -4,6 +4,7 @@ import com.qian.common.exception.ServiceException;
 import com.qian.common.utils.StringUtils;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * SQL操作工具类
@@ -43,7 +44,7 @@ public class SqlUtil {
         if (StringUtils.isEmpty(value)) {
             return;
         }
-        List<String> sqlKeywords = StringUtils.split(SQL_REGEX, "\\|");
+        String[] sqlKeywords = StringUtils.split(SQL_REGEX, "\\|");
         for (String sqlKeyword : sqlKeywords) {
             if (StringUtils.indexOfIgnoreCase(value, sqlKeyword) > -1) {
                 throw new ServiceException("存在SQL关键字");
@@ -59,5 +60,19 @@ public class SqlUtil {
             return new String[0];
         }
         return list.stream().toArray(String[]::new);
+    }
+
+    public static String[] toStrArray(String str) {
+        if (StringUtils.isEmpty(str)) {
+            return new String[0];
+        }
+        return str.split(",");
+    }
+
+    public static List<String> toStrList(String str) {
+        if (StringUtils.isEmpty(str)) {
+            return new ArrayList<>();
+        }
+        return new ArrayList<>(Arrays.asList(str.split(",")));
     }
 } 

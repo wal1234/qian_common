@@ -1,11 +1,9 @@
 package com.qian.common.exception;
 
-import com.qian.common.enums.common.ErrorCodeEnum;
-
 /**
  * 业务异常
  */
-public class ServiceException extends BaseException {
+public class ServiceException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -27,19 +25,15 @@ public class ServiceException extends BaseException {
      * 空构造方法，避免反序列化问题
      */
     public ServiceException() {
-        super(500, "业务异常");
     }
 
     public ServiceException(String message) {
-        super(500, message);
+        this.message = message;
     }
 
     public ServiceException(String message, Integer code) {
-        super(code, message);
-    }
-
-    public ServiceException(ErrorCodeEnum errorCode) {
-        super(errorCode);
+        this.message = message;
+        this.code = code;
     }
 
     public String getDetailMessage() {
@@ -51,8 +45,7 @@ public class ServiceException extends BaseException {
         return message;
     }
 
-    @Override
-    public int getCode() {
+    public Integer getCode() {
         return code;
     }
 
